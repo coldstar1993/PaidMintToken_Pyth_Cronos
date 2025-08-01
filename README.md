@@ -14,9 +14,11 @@ Please make sure these are installed on your system before continuing.
 * [foundry](https://book.getfoundry.sh/getting-started/installation)
 * [node](https://nodejs.org/en/download/)
 
-then *git clone* this repo on you pc.
+then *git clone* this repo on you pc, then:
 
 ```shell
+cd PaidMintToken_Pyth_Cronos
+
 npm install @pythnetwork/pyth-sdk-solidity
 
 forge install foundry-rs/forge-std@v1.10.0
