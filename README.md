@@ -16,6 +16,17 @@ Please make sure these are installed on your system before continuing.
 
 then *git clone* this repo on you pc.
 
+```shell
+npm install @pythnetwork/pyth-sdk-solidity
+
+forge install foundry-rs/forge-std@v1.10.0
+
+forge install OpenZeppelin/openzeppelin-contracts@v4.8.1
+
+```
+
+
+
 ### Inspect contract
 The key contract [PaidMintToken](./src/PaidMintToken.sol) inherits `ERC20` and `Ownable` from [openzeppelin-contracts](https://github.com/OpenZeppelin/openzeppelin-contracts), with two fields as belows by which it reads the price of ETH/USD from Pyth,
 * `IPyth pyth`
