@@ -22,15 +22,15 @@ The key contract [PaidMintToken](./src/PaidMintToken.sol) inherits `ERC20` and `
 * `bytes32 ethUsdPriceId`
 
 as well as several functions as blows:
-* [updateAndMint()](./src/PaidMintToken.sol): update price to Pyth contract and exec mint()
-* [mint()](./src/PaidMintToken.sol): read the price from Pyth contract, and mint tokens if user pay >= $1 of ETH
-* [hasMinted()](./src/PaidMintToken.sol): check and avoid re-mint.
-* [withdraw()](./src/PaidMintToken.sol): only contract owner could withdraw the ETH away. 
+* [updateAndMint()](https://github.com/coldstar1993/PaidMintToken_Pyth_Cronos/blob/d233db8d8d341927b63da698cf01f4e3a3b92c7a/src/PaidMintToken.sol#L69): update price to Pyth contract and exec mint()
+* [mint()](https://github.com/coldstar1993/PaidMintToken_Pyth_Cronos/blob/d233db8d8d341927b63da698cf01f4e3a3b92c7a/src/PaidMintToken.sol#L34): read the price from Pyth contract, and mint tokens if user pay >= $1 of ETH
+* [hasMinted()](https://github.com/coldstar1993/PaidMintToken_Pyth_Cronos/blob/d233db8d8d341927b63da698cf01f4e3a3b92c7a/src/PaidMintToken.sol#L81): check and avoid re-mint.
+* [withdraw()](https://github.com/coldstar1993/PaidMintToken_Pyth_Cronos/blob/d233db8d8d341927b63da698cf01f4e3a3b92c7a/src/PaidMintToken.sol#L86): only contract owner could withdraw the ETH away. 
 
-Now, let's dive into key functions: [updateAndMint()](./src/PaidMintToken.sol) and [mint()](./src/PaidMintToken.sol):
+Now, let's dive into key functions: [updateAndMint()](https://github.com/coldstar1993/PaidMintToken_Pyth_Cronos/blob/d233db8d8d341927b63da698cf01f4e3a3b92c7a/src/PaidMintToken.sol#L69) and [mint()](https://github.com/coldstar1993/PaidMintToken_Pyth_Cronos/blob/d233db8d8d341927b63da698cf01f4e3a3b92c7a/src/PaidMintToken.sol#L34):
 1. Call `IPyth.getUpdateFee` to calculate the fee charged by Pyth to update the price.
 2. Call `IPyth.updatePriceFeeds` to update the price, paying the fee calculated in the previous step.
-3. Within [mint()](./src/PaidMintToken.sol), Call `IPyth.getPriceNoOlderThan` to read the current price, providing the price feed ID(ie. `ethUsdPriceId`) that you wish to read and your acceptable staleness threshold(**60sec** here) for the price.
+3. Within [mint()](https://github.com/coldstar1993/PaidMintToken_Pyth_Cronos/blob/d233db8d8d341927b63da698cf01f4e3a3b92c7a/src/PaidMintToken.sol#L34), Call `IPyth.getPriceNoOlderThan` to read the current price, providing the price feed ID(ie. `ethUsdPriceId`) that you wish to read and your acceptable staleness threshold(**60sec** here) for the price.
 4. finally, if user pay more than $1 of ETH, then allow to mint tokens.
 
 
