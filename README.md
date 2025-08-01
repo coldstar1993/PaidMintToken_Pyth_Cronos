@@ -1,6 +1,6 @@
 ## Paid Mint Token (Demo)
 
-**In this demo, we will use real-time Pyth price data to mint erc20 tokens in exchange for $1 of ETH.**
+**In this demo, we will use real-time Pyth price data to mint erc20 tokens in exchange for $1 of ETH, wherein showcase how a Cronos Dapp could get a price feed.**
 
 It follows [PULL ORACLE pattern](https://docs.pyth.network/price-feeds/pull-updates#pull-oracles):
 1. users request the latest [price update](https://github.com/pyth-network/pyth-crosschain/blob/b6d40a728aeef32fb5a7f3f3ba83eb0ef82cc1cc/target_chains/ethereum/sdk/solidity/PythStructs.sol#L25)(regarding ETH/USD) from an off-chain service.
