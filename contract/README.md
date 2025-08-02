@@ -19,7 +19,7 @@ Please make sure these are installed on your system before continuing.
 then *git clone* this repo on you pc, then:
 
 ```shell
-cd PaidMintToken_Pyth_Cronos/contract
+cd PaidMintToken-Pyth-Cronos/contract
 
 npm install @pythnetwork/pyth-sdk-solidity
 
@@ -37,15 +37,15 @@ The key contract [PaidMintToken](./src/PaidMintToken.sol) inherits `ERC20` and `
 * `bytes32 ethUsdPriceId`
 
 as well as several functions as blows:
-* [updateAndMint()](https://github.com/coldstar1993/PaidMintToken_Pyth_Cronos/blob/d233db8d8d341927b63da698cf01f4e3a3b92c7a/src/PaidMintToken.sol#L69): update price to Pyth contract and exec mint()
-* [mint()](https://github.com/coldstar1993/PaidMintToken_Pyth_Cronos/blob/d233db8d8d341927b63da698cf01f4e3a3b92c7a/src/PaidMintToken.sol#L34): read the price from Pyth contract, and mint tokens if user pay >= $1 of ETH
-* [hasMinted()](https://github.com/coldstar1993/PaidMintToken_Pyth_Cronos/blob/d233db8d8d341927b63da698cf01f4e3a3b92c7a/src/PaidMintToken.sol#L81): check and avoid re-mint.
-* [withdraw()](https://github.com/coldstar1993/PaidMintToken_Pyth_Cronos/blob/d233db8d8d341927b63da698cf01f4e3a3b92c7a/src/PaidMintToken.sol#L86): only contract owner could withdraw the ETH away. 
+* [updateAndMint()](https://github.com/coldstar1993/PaidMintToken-Pyth-Cronos/blob/14e1d943dced94a2074a09a9895a70d791f6e673/contract/src/PaidMintToken.sol#L69): update price to Pyth contract and exec mint()
+* [mint()](https://github.com/coldstar1993/PaidMintToken-Pyth-Cronos/blob/14e1d943dced94a2074a09a9895a70d791f6e673/contract/src/PaidMintToken.sol#L34): read the price from Pyth contract, and mint tokens if user pay >= $1 of ETH
+* [hasMinted()](https://github.com/coldstar1993/PaidMintToken-Pyth-Cronos/blob/14e1d943dced94a2074a09a9895a70d791f6e673/contract/src/PaidMintToken.sol#L81): check and avoid re-mint.
+* [withdraw()](https://github.com/coldstar1993/PaidMintToken-Pyth-Cronos/blob/14e1d943dced94a2074a09a9895a70d791f6e673/contract/src/PaidMintToken.sol#L86): only contract owner could withdraw the ETH away. 
 
-Now, let's dive into key functions: [updateAndMint()](https://github.com/coldstar1993/PaidMintToken_Pyth_Cronos/blob/d233db8d8d341927b63da698cf01f4e3a3b92c7a/src/PaidMintToken.sol#L69) and [mint()](https://github.com/coldstar1993/PaidMintToken_Pyth_Cronos/blob/d233db8d8d341927b63da698cf01f4e3a3b92c7a/src/PaidMintToken.sol#L34):
+Now, let's dive into key functions: [updateAndMint()](https://github.com/coldstar1993/PaidMintToken-Pyth-Cronos/blob/14e1d943dced94a2074a09a9895a70d791f6e673/contract/src/PaidMintToken.sol#L69) and [mint()](https://github.com/coldstar1993/PaidMintToken-Pyth-Cronos/blob/14e1d943dced94a2074a09a9895a70d791f6e673/contract/src/PaidMintToken.sol#L34):
 1. Call `IPyth.getUpdateFee` to calculate the fee charged by Pyth to update the price.
 2. Call `IPyth.updatePriceFeeds` to update the price, paying the fee calculated in the previous step.
-3. Within [mint()](https://github.com/coldstar1993/PaidMintToken_Pyth_Cronos/blob/d233db8d8d341927b63da698cf01f4e3a3b92c7a/src/PaidMintToken.sol#L34), Call `IPyth.getPriceNoOlderThan` to read the current price, providing the price feed ID(ie. `ethUsdPriceId`) that you wish to read and your acceptable staleness threshold(**60sec** here) for the price.
+3. Within [mint()](https://github.com/coldstar1993/PaidMintToken-Pyth-Cronos/blob/14e1d943dced94a2074a09a9895a70d791f6e673/contract/src/PaidMintToken.sol#L34), Call `IPyth.getPriceNoOlderThan` to read the current price, providing the price feed ID(ie. `ethUsdPriceId`) that you wish to read and your acceptable staleness threshold(**60sec** here) for the price.
 4. finally, if user pay more than $1 of ETH, then allow to mint tokens.
 
 
