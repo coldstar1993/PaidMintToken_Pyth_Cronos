@@ -29,7 +29,7 @@ forge install OpenZeppelin/openzeppelin-contracts@v4.8.1
 
 
 
-### Inspect contract
+### Inspect Smart Contract
 The key contract [PaidMintToken](./src/PaidMintToken.sol) inherits `ERC20` and `Ownable` from [openzeppelin-contracts](https://github.com/OpenZeppelin/openzeppelin-contracts), with two fields as belows by which it reads the price of ETH/USD from Pyth,
 * `IPyth pyth`
 * `bytes32 ethUsdPriceId`
