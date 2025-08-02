@@ -25,3 +25,9 @@ $ npm run build
 ```shell
 $ npm run mint
 ```
+
+NOTE: each address can only mint once!
+
+Here is my mint tx: https://explorer.cronos.org/testnet/tx/0x6dd8c8e6abfe7bcb3668a5828f91bf61dc3079cdf3ce24b2579f719d5625996d
+
+
