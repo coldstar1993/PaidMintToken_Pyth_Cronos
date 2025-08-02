@@ -2,6 +2,8 @@
 
 **In this demo, we will use real-time Pyth price data to mint erc20 tokens in exchange for $1 of ETH, wherein showcase how a Cronos Dapp could get a price feed.**
 
+Smart Contract is deployed at address: [0xFC6eB7cCfd160606e0710b6B2D6C78Ea5E929C9E](https://explorer.cronos.org/testnet/address/0xFC6eB7cCfd160606e0710b6B2D6C78Ea5E929C9E)
+
 It follows [PULL ORACLE pattern](https://docs.pyth.network/price-feeds/pull-updates#pull-oracles):
 1. users request the latest [price update](https://github.com/pyth-network/pyth-crosschain/blob/b6d40a728aeef32fb5a7f3f3ba83eb0ef82cc1cc/target_chains/ethereum/sdk/solidity/PythStructs.sol#L25)(regarding ETH/USD) from an off-chain service.
 2. then submit the price update to the on-chain Pyth contract (cost fee), which verifies its authenticity and stores it onchain.
@@ -17,7 +19,7 @@ Please make sure these are installed on your system before continuing.
 then *git clone* this repo on you pc, then:
 
 ```shell
-cd PaidMintToken_Pyth_Cronos
+cd PaidMintToken_Pyth_Cronos/contract
 
 npm install @pythnetwork/pyth-sdk-solidity
 

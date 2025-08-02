@@ -1,7 +1,7 @@
 
 ## Usage
 
-First, you need add your private key into env.
+First, you need add `your private key` into env.
 
 ```shell
 cd app/
