@@ -2,7 +2,7 @@
 
 **In this demo, we will use real-time Pyth price data to mint erc20 tokens in exchange for $1 of CRO, wherein showcase how a Cronos Dapp could get a price feed.**
 
-Smart Contract is deployed at address: [0x36dA3Ee88865037e80Ae350916219f5736748D77](https://explorer.cronos.org/testnet/address/0x36dA3Ee88865037e80Ae350916219f5736748D77)
+Smart Contract is deployed at address: [0x70C007c37DFb231fCFFA2c1F1310e4611Cd7533a](https://explorer.cronos.org/testnet/address/0x70C007c37DFb231fCFFA2c1F1310e4611Cd7533a)
 
 It follows [PULL ORACLE pattern](https://docs.pyth.network/price-feeds/pull-updates#pull-oracles):
 1. users request the latest [price update](https://github.com/pyth-network/pyth-crosschain/blob/b6d40a728aeef32fb5a7f3f3ba83eb0ef82cc1cc/target_chains/ethereum/sdk/solidity/PythStructs.sol#L25)(regarding CRO/USD) from an off-chain service.
