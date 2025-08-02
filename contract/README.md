@@ -25,7 +25,7 @@ npm install @pythnetwork/pyth-sdk-solidity
 
 forge install foundry-rs/forge-std@v1.10.0
 
-forge install OpenZeppelin/openzeppelin-contracts@v4.8.1
+forge install OpenZeppelin/openzeppelin-contracts@v5.4.0
 
 ```
 
