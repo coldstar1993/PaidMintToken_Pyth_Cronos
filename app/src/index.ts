@@ -7,7 +7,7 @@ import dotenv from 'dotenv';
 // load .env file to process.env
 dotenv.config();
 
-console.log(`ETH_USD_ID: ${process.env["ETH_USD_ID"]}`);
+console.log(`CRO_USD_ID: ${process.env["CRO_USD_ID"]}`);
 
 export const abi = [
   {
@@ -19,7 +19,7 @@ export const abi = [
         internalType: "address",
       },
       {
-        name: "_ethUsdPriceId",
+        name: "_croUsdPriceId",
         type: "bytes32",
         internalType: "bytes32",
       },
@@ -69,7 +69,7 @@ async function run() {
   });
 
   const connection = new HermesClient("https://hermes.pyth.network");
-  const priceIds = [process.env["ETH_USD_ID"] as string];
+  const priceIds = [process.env["CRO_USD_ID"] as string];
   const priceFeedUpdateData = await connection.getLatestPriceUpdates(priceIds);
   console.log("Retrieved Pyth price update:");
   console.log(priceFeedUpdateData);

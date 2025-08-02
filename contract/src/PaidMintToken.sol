@@ -6,14 +6,14 @@ import "openzeppelin-contracts/contracts/token/ERC20/ERC20.sol";
 import "openzeppelin-contracts/contracts/access/Ownable.sol";
 import "@pythnetwork/pyth-sdk-solidity/IPyth.sol";
 
-/// @notice In this tutorial, we will use real-time Pyth price data to mint erc20 tokens in exchange for $1 of ETH.
-///         Our solidity contract will read the price of ETH/USD from Pyth and use it to calculate the amount of ETH required to mint the tokens.
+/// @notice In this tutorial, we will use real-time Pyth price data to mint erc20 tokens in exchange for $1 of CRO.
+///         Our solidity contract will read the price of CRO/USD from Pyth and use it to calculate the amount of CRO required to mint the tokens.
 ///
-/// @title use real-time Pyth price data to mint erc20 tokens in exchange for $1 of ETH
+/// @title use real-time Pyth price data to mint erc20 tokens in exchange for $1 of CRO
 /// @author luozhixiao1993@gmail.com
 contract PaidMintToken is ERC20, Ownable {
     IPyth pyth;
-    bytes32 ethUsdPriceId;
+    bytes32 croUsdPriceId;
 
     uint256 public constant TOKENS_PER_MINT = 1000; // 1000 tokens per mint
 
@@ -22,9 +22,9 @@ contract PaidMintToken is ERC20, Ownable {
 
     event TokensMinted(address indexed user, uint256 amount);
 
-    constructor(address _pyth, bytes32 _ethUsdPriceId) ERC20("Paid Mint Token", "PMT") Ownable(msg.sender){
+    constructor(address _pyth, bytes32 _croUsdPriceId) ERC20("Paid Mint Token", "PMT") Ownable(msg.sender){
         pyth = IPyth(_pyth);
-        ethUsdPriceId = _ethUsdPriceId;
+        croUsdPriceId = _croUsdPriceId;
     }
 
     /// @dev this function's progress:
@@ -36,14 +36,14 @@ contract PaidMintToken is ERC20, Ownable {
         require(!_hasMinted[msg.sender], "Already minted");
 
         // to guarantee the price is not older than 60s.
-        PythStructs.Price memory price = pyth.getPriceNoOlderThan(ethUsdPriceId, 60);
-        console2.log("price of ETH in USD");
+        PythStructs.Price memory price = pyth.getPriceNoOlderThan(croUsdPriceId, 60);
+        console2.log("price of CRO in USD");
         console2.log(price.price);
 
-        // let's say, 1000usd/eth, i.e. 1000usd per 10**18 WEI, then 1usd = (10**18)/1000 WEI
-        uint256 ethPrice18Decimals =
+        // let's say, 1000usd/cro, i.e. 1000usd per 10**18 WEI, then 1usd = (10**18)/1000 WEI
+        uint256 croPrice18Decimals =
             (uint256(uint64(price.price)) * (10 ** 18)) / (10 ** uint8(uint32(-1 * price.expo)));
-        uint256 oneDollarInWei = ((10 ** 18) * (10 ** 18)) / ethPrice18Decimals;
+        uint256 oneDollarInWei = ((10 ** 18) * (10 ** 18)) / croPrice18Decimals;
 
         console2.log("required payment in wei");
         console2.log(oneDollarInWei);
@@ -85,7 +85,7 @@ contract PaidMintToken is ERC20, Ownable {
     /// @notice withdraw from contract
     function withdraw() external onlyOwner {
         uint256 balance = address(this).balance;
-        require(balance > 0, "No ETH to withdraw");
+        require(balance > 0, "No CRO to withdraw");
         payable(owner()).transfer(balance);
     }
 
