@@ -62,3 +62,26 @@ $ forge build
 ```shell
 $ forge test
 ```
+
+### Deployment
+
+if you wanna deploy [PaidMintToken](./src/PaidMintToken.sol) again, then follow the steps belows:
+
+```shell
+$ export ADDRESS=0x_YOUR_ADDRESS
+
+$ export PRIVATE_KEY=0x_YOUR_PRIVATE_KEY
+
+$ export RPC_URL="https://evm-t3.cronos.org"
+
+$ export PYTH_CRONOS_ADDRESS=0x36825bf3Fbdf5a29E2d5148bfe7Dcf7B5639e320
+
+$ export ETH_USD_ID=0xff61491a931112ddf1bd8147cd1b641375f79f5825126d665480874634fd0ace
+
+$ forge create src/PaidMintToken.sol:PaidMintToken --private-key $PRIVATE_KEY --rpc-url $RPC_URL --broadcast --constructor-args $PYTH_CRONOS_ADDRESS $ETH_USD_ID
+
+```
+
+Note: if you deploy contract yourself, **DO NOT forget** to update `DEPLOYMENT_ADDRESS` in [.env](../app/.env) with the latest contract address. 
+
+For more details of Pyth on Cronos TestNet, please reference [here](https://docs.cronos.org/for-dapp-developers/dev-tools-and-integrations/pyth#pyth-on-cronos-evm).

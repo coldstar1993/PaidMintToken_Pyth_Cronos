@@ -14,6 +14,8 @@ export PRIVATE_KEY=YOUR_PRIVATE_KEY
 
 ### Build
 
+Note: if you deploy contract yourself, then DO NOT forget to update `DEPLOYMENT_ADDRESS` in [.env](./.env) with the latest contract address. 
+
 ```shell
 $ npm run build
 ```
