@@ -22,7 +22,7 @@ contract PaidMintToken is ERC20, Ownable {
 
     event TokensMinted(address indexed user, uint256 amount);
 
-    constructor(address _pyth, bytes32 _ethUsdPriceId) ERC20("Paid Mint Token", "PMT") Ownable(msg.sender) {
+    constructor(address _pyth, bytes32 _ethUsdPriceId) ERC20("Paid Mint Token", "PMT") Ownable(msg.sender){
         pyth = IPyth(_pyth);
         ethUsdPriceId = _ethUsdPriceId;
     }
